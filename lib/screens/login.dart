@@ -4,6 +4,8 @@ import 'package:flutter_app_list/controllers/authController.dart';
 import 'package:flutter_app_list/screens/signup.dart';
 
 class Login extends GetWidget<AuthController> {
+  //Whenever the user modifies a text field with an associated TextEditingController,
+  // the text field updates value and the controller notifies its listeners.
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
@@ -20,6 +22,8 @@ class Login extends GetWidget<AuthController> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               TextFormField(
+                //TextFormField is a FormField that contains a text field
+                //FormField maintains the current state and shows changes in values and validation errors visually
                 decoration: InputDecoration(hintText: "Email"),
                 controller: emailController,
               ),

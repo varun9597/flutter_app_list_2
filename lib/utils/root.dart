@@ -18,8 +18,8 @@ class Root extends GetWidget<AuthController> {
             UserController()); // here, we instantiate the class using get.put() so that it is available for all child routes
       },
       builder: (_) {
+        //Get.find is used to find a controller that is being used by another page and redirect you to it
         if (Get.find<AuthController>().user?.uid != null) {
-          //Get.find is used to find a controller that is being used by another page and redirect you to it
           return Home();
         } else {
           return Login();
