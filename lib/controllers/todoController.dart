@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_app_list/controllers/authController.dart';
 import 'package:flutter_app_list/controllers/bindings/authBinding.dart';

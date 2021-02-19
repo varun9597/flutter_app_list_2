@@ -41,6 +41,8 @@ class SignUp extends GetWidget<AuthController> {
               FlatButton(
                 child: Text("Sign Up"),
                 onPressed: () {
+                  //since we have our class extending GetWidget<AuthController>
+                  //Just writing "controller" works and fetches the AuthController
                   controller.createUser(nameController.text,
                       emailController.text, passwordController.text);
                 },

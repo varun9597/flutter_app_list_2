@@ -59,7 +59,8 @@ class Database {
     });
   }
 
-  Future<void> updateTodo(bool newValue, String uid, String todoId) async {
+  Future<void> updateTodoCheckbox(
+      bool newValue, String uid, String todoId) async {
     try {
       _firestore
           .collection("users")
@@ -67,6 +68,21 @@ class Database {
           .collection("todos")
           .doc(todoId)
           .update({"done": newValue});
+    } catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
+
+  Future<void> updateTodoContent(
+      String newContent, String uid, String todoId) async {
+    try {
+      _firestore
+          .collection("users")
+          .doc(uid)
+          .collection("todos")
+          .doc(todoId)
+          .update({"done": newContent});
     } catch (e) {
       print(e);
       rethrow;

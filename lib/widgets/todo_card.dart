@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_list/models/todo.dart';
 import 'package:flutter_app_list/services/database.dart';
+import 'package:flutter_app_list/controllers/todoController.dart';
+import 'package:flutter_app_list/widgets/todo_alert_dialog.dart';
 
 class TodoCard extends StatelessWidget {
   final String uid;
@@ -17,20 +19,33 @@ class TodoCard extends StatelessWidget {
         child: Row(
           children: [
             Expanded(
-              child: Text(
-                todo.content,
-                style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
+              child: FlatButton(
+                child: Text(
+                  todo.content,
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
+                onPressed: () {},
               ),
             ),
             Checkbox(
               value: todo.done,
               onChanged: (newValue) {
-                Database().updateTodo(newValue, uid, todo.todoId);
+                Database().updateTodoCheckbox(newValue, uid, todo.todoId);
               },
             ),
+            IconButton(
+              icon: Icon(Icons.edit),
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  child: EditTodoDialogWidget(),
+                  barrierDismissible: true,
+                );
+              },
+            )
           ],
         ),
       ),

@@ -13,7 +13,9 @@ class Home extends GetWidget<AuthController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        //GetX<UserController> calls the user controller to get the user name
         title: GetX<UserController>(
+          //(_) is used to refer to the UserController since it has been called in GetX function above
           initState: (_) async {
             Get.find<UserController>().user =
                 await Database().getUser(Get.find<AuthController>().user.uid);
@@ -72,9 +74,11 @@ class Home extends GetWidget<AuthController> {
                   IconButton(
                     icon: Icon(Icons.add),
                     onPressed: () {
+                      //on pressing '+' code checks if text isn't null and adds new todos
                       if (_todoController.text != "") {
                         Database()
                             .addTodo(_todoController.text, controller.user.uid);
+                        //clear is needed to avoid adding the same todos again
                         _todoController.clear();
                       }
                     },
@@ -93,12 +97,14 @@ class Home extends GetWidget<AuthController> {
           GetX<TodoController>(
             init: Get.put<TodoController>(TodoController()),
             builder: (TodoController todoController) {
+              //Checks if todoController has any content
               if (todoController != null && todoController.todos != null) {
                 return Expanded(
                   child: ListView.builder(
                     itemCount: todoController.todos.length,
                     itemBuilder: (_, index) {
                       return TodoCard(
+                          //return Todcard by checking the uid
                           uid: controller.user.uid,
                           todo: todoController.todos[index]);
                     },

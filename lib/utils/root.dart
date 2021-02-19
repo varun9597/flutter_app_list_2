@@ -20,8 +20,10 @@ class Root extends GetWidget<AuthController> {
       builder: (_) {
         //Get.find is used to find a controller that is being used by another page and redirect you to it
         if (Get.find<AuthController>().user?.uid != null) {
+          //when user.uid is not null, it goes to the Home.dart page
           return Home();
         } else {
+          //else takes to the login page
           return Login();
         }
       },
