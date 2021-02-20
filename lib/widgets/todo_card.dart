@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_list/models/todo.dart';
 import 'package:flutter_app_list/services/database.dart';
-import 'package:flutter_app_list/controllers/todoController.dart';
+
 import 'package:flutter_app_list/widgets/todo_alert_dialog.dart';
 
 class TodoCard extends StatelessWidget {
@@ -41,7 +41,7 @@ class TodoCard extends StatelessWidget {
               onPressed: () {
                 showDialog(
                   context: context,
-                  child: EditTodoDialogWidget(),
+                  child: EditTodoDialogWidget(todo),
                   barrierDismissible: true,
                 );
               },

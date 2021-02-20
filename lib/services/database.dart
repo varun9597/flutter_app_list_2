@@ -82,7 +82,7 @@ class Database {
           .doc(uid)
           .collection("todos")
           .doc(todoId)
-          .update({"done": newContent});
+          .update({"content": newContent});
     } catch (e) {
       print(e);
       rethrow;

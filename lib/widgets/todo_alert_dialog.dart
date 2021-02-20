@@ -1,27 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_list/controllers/userController.dart';
 import 'package:flutter_app_list/models/todo.dart';
-import 'package:flutter_app_list/models/user.dart';
 import 'package:get/get.dart';
 import 'package:flutter_app_list/services/database.dart';
 import 'package:flutter_app_list/controllers/todoController.dart';
 import 'package:flutter_app_list/widgets/todo_form_widget.dart';
 
 class EditTodoDialogWidget extends StatefulWidget {
-  final TodoModel todoModel;
+  final String uid;
+  final TodoModel todo;
+  final String content;
+  const EditTodoDialogWidget(this.todo, {Key key, this.uid, this.content})
+      : super(key: key);
 
-  const EditTodoDialogWidget({Key key, this.todoModel}) : super(key: key);
   @override
   _EditTodoDialogWidgetState createState() => _EditTodoDialogWidgetState();
 }
 
 class _EditTodoDialogWidgetState extends State<EditTodoDialogWidget> {
-  final _formKey = GlobalKey<FormState>();
   String content = '';
-  TodoModel todoModel;
-  //TodoModel -todo = Get.find<TodoController>().todos.first;
 
-  UserModel userModel;
   @override
   Widget build(BuildContext context) => AlertDialog(
         content: Column(
@@ -39,12 +37,16 @@ class _EditTodoDialogWidgetState extends State<EditTodoDialogWidget> {
               height: 8,
             ),
             TodoFormWidget(
-                onChangedContent: (content) => setState(() => this.content),
+                //onChangedContent: ,
+                onChangedContent: (newContent) =>
+                    setState(() => this.content = newContent),
                 onSavedTodo: () {
                   String uid = Get.find<UserController>().user.id;
-                  TodoModel todo = Get.find<TodoController>().todos.first;
 
-                  Database().updateTodoContent(content, uid, todoModel.todoId);
+                  Get.find<TodoController>().todos.first;
+
+                  Database()
+                      .updateTodoContent(content, uid, widget.todo.todoId);
                 }),
           ],
         ),
