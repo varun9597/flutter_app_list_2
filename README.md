@@ -1,6 +1,8 @@
 # flutter_app_list
 
-A new Flutter application.
+A Todo Application - TadasPetraEdition.
+Acts as an introduction to Firebase And Flutter.
+Navigations performed using GetX.
 
 ## Getting Started
 
