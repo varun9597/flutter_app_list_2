@@ -40,8 +40,8 @@ class TodoCard extends StatelessWidget {
               icon: Icon(Icons.edit),
               onPressed: () {
                 showDialog(
+                  builder: (context) => EditTodoDialogWidget(todo),
                   context: context,
-                  child: EditTodoDialogWidget(todo),
                   barrierDismissible: true,
                 );
               },
